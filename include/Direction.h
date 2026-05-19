@@ -2,12 +2,12 @@
 
 // Strongly typed enum representing the 6 physical directions of a regular hexagon in clockwise order
 enum class Direction {
-    N = 0, // North
-    NE = 1, // North-East
-    SE = 2, // South-East
-    S = 3, // South
-    SW = 4, // South-West
-    NW = 5  // North-West
+    NorthEast = 0, // 30 degrees (formerly East)
+    East,          // 90 degrees (formerly South-East)
+    SouthEast,     // 150 degrees (formerly South-West)
+    SouthWest,     // 210 degrees (formerly West)
+    West,          // 270 degrees (formerly North-West)
+    NorthWest      // 330 degrees (formerly North-East)
 };
 
 // Utility class containing stateless static methods to manipulate Directions
@@ -31,4 +31,31 @@ public:
     static Direction rotateCounterClockwise(Direction direction) {
         return static_cast<Direction>((static_cast<int>(direction) + 5) % 6);
     }
+
+    static float toAngle(Direction dir)
+    {
+        switch (dir)
+        {
+        case Direction::NorthEast:
+            return -30.f;
+
+        case Direction::East:
+            return 30.f;
+
+        case Direction::SouthEast:
+            return 90.f;
+
+        case Direction::SouthWest:
+            return 150.f;
+
+        case Direction::West:
+            return 210.f;
+
+        case Direction::NorthWest:
+            return 270.f;
+        }
+
+        return 0.f;
+    }
+
 };

@@ -4,17 +4,17 @@
 #include <exception>
 
 // Plus tard, nous inclurons l'orchestrateur :
-// #include "../Game/Game.hpp"
+ #include "Game.h"
 
 int main() {
     try {
         std::cout << "Initialisation du moteur de jeu 'Lights'..." << std::endl;
 
-        /*
-           La logique future sera :
+        
+           
            Game game;
            game.run();
-        */
+        
 
         std::cout << "Fermeture normale de l'application." << std::endl;
         return 0;

@@ -1,25 +1,27 @@
-﻿#include "Logger.hpp"
+﻿#include "Logger.h"
 #include <fstream>
 #include <iostream>
 #include <chrono>
 #include <iomanip>
+#include <ctime>
 
 void Logger::logError(const std::string& errorMessage) {
-    // Ouverture en mode ajout (append)
     std::ofstream logFile("log.txt", std::ios_base::app);
 
     if (logFile.is_open()) {
-        // Horodatage de l'erreur
         auto now = std::chrono::system_clock::now();
-        auto in_time_t = std::chrono::system_clock::to_time_t(now);
+        std::time_t in_time_t = std::chrono::system_clock::to_time_t(now);
 
-        logFile << "[" << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %H:%M:%S") << "] "
+        // Safe Microsoft secure alternative to prevent C4996 error
+        std::tm timeInfo;
+        localtime_s(&timeInfo, &in_time_t);
+
+        logFile << "[" << std::put_time(&timeInfo, "%Y-%m-%d %H:%M:%S") << "] "
             << errorMessage << "\n";
 
         logFile.close();
     }
     else {
-        // Repli de secours sur la sortie d'erreur standard si le disque est verrouillé
-        std::cerr << "Impossible d'écrire dans log.txt ! Erreur d'origine : " << errorMessage << std::endl;
+        std::cerr << "Impossible to write to log.txt! Original error: " << errorMessage << std::endl;
     }
 }
