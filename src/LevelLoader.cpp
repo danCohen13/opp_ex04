@@ -48,7 +48,6 @@ Level LevelLoader::loadFromFile(const std::string& filepath) {
             if (!(bulbStream >> dirValue) || dirValue < 0 || dirValue > 5) {
                 throw CorruptedLevelException("Invalid arm direction index value.");
             }
-            // CORRECTION : Utilisation directe du vecteur standard pour stocker la direction
             info.initialArms.push_back(static_cast<Direction>(dirValue));
         }
 

@@ -6,7 +6,6 @@ Bulb::Bulb(const std::vector<Direction>& initialArms, bool isCentral)
     m_isCentral(isCentral),
     m_initialArms(6, false) {
 
-    // Populate the active structural arms using enum values as indices
     for (const auto& direction : initialArms) {
         m_initialArms[static_cast<int>(direction)] = true;
     }
@@ -22,7 +21,7 @@ void Bulb::rotateCounterClockwise() {
 
 void Bulb::setLitState(bool isLit) {
     if (m_isCentral) {
-        m_isLit = true; // Central source cannot be turned off
+        m_isLit = true; 
     }
     else {
         m_isLit = isLit;
@@ -44,7 +43,6 @@ int Bulb::getOrientation() const {
 bool Bulb::hasArm(Direction direction) const {
     int dirValue = static_cast<int>(direction);
 
-    // Reverse the current orientation rotation to find the original arm index
     int originalIndex = (dirValue - m_orientation + 6) % 6;
 
     return m_initialArms[originalIndex];

@@ -4,7 +4,6 @@
 void Board::addBulb(const HexPosition& position, const Bulb& bulb) {
     m_bulbs.insert({ position, bulb });
 
-    // Convert geographic coordinates into abstract graph indices
     size_t graphId = m_graph.addVertex(position);
     m_positionToGraphId[position] = graphId;
     m_graphIdToPosition[graphId] = position;
@@ -55,4 +54,8 @@ void Board::clear() {
     m_graphIdToPosition.clear();
     m_graph.clear();
     m_centralVertexId = 0;
+}
+
+size_t Board::getIdFromPosition(const HexPosition& position) const {
+    return m_positionToGraphId.at(position);
 }

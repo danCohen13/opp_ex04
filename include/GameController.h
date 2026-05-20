@@ -11,7 +11,6 @@ public:
     GameController(Board& board, RenderSystem& renderSystem, BoardRenderer& boardRenderer, ResourceManager& resourceManager);
     ~GameController() = default;
 
-    // CORRECTION : Ces fonctions doivent obligatoirement être publiques pour être appelées par la classe Game
     void handleInput();
     void update();
     GameState getCurrentState() const;
@@ -22,4 +21,7 @@ private:
     BoardRenderer& m_boardRenderer;
     ResourceManager& m_resourceManager;
     GameState m_currentState;
+
+    sf::Clock        m_successClock;      
+    float            m_successDuration;
 };

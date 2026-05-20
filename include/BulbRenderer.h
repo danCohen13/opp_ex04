@@ -15,7 +15,8 @@ private:
     const Bulb& m_bulb;
     ResourceManager& m_resourceManager;
 
-    sf::CircleShape m_hexagonBg;  // Le fond hexagonal fait par le code
-    sf::CircleShape m_body;       // Le rond central de l'ampoule
-    sf::RectangleShape m_armShape; // La forme de base d'une tige
+    sf::CircleShape m_hexagonBg;
+    sf::CircleShape m_body;
+    sf::RectangleShape m_armShape;
+
 };

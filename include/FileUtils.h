@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include <string>
-#include "Direction.h" // CORRECTION : Élimine l'erreur syntax error: identifier 'Direction'
+#include "Direction.h" 
 
 class FileUtils {
 public:

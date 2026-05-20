@@ -1,5 +1,4 @@
-#pragma once
-
+﻿#pragma once
 #include "HexPosition.h"
 #include "Bulb.h"
 #include "Graph.h"
@@ -23,14 +22,15 @@ public:
 
     size_t getCentralVertexId() const;
     HexPosition getPositionFromId(size_t graphId) const;
-    const std::map<HexPosition, Bulb>& getAllBulbs() const;
+    size_t getIdFromPosition(const HexPosition& position) const; 
 
+    const std::map<HexPosition, Bulb>& getAllBulbs() const;
     void clear();
 
 private:
-    Graph<HexPosition> m_graph;
-    std::map<HexPosition, Bulb> m_bulbs;
-    std::map<HexPosition, size_t> m_positionToGraphId;
-    std::map<size_t, HexPosition> m_graphIdToPosition;
-    size_t m_centralVertexId = 0;
+    Graph<HexPosition>             m_graph;
+    std::map<HexPosition, Bulb>    m_bulbs;
+    std::map<HexPosition, size_t>  m_positionToGraphId;
+    std::map<size_t, HexPosition>  m_graphIdToPosition;
+    size_t                         m_centralVertexId = 0;
 };

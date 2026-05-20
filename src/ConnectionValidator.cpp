@@ -5,7 +5,6 @@ bool ConnectionValidator::canConnect(const Board& board, const HexPosition& from
     const Bulb& sourceBulb = board.getBulb(from);
     const Bulb& targetBulb = board.getBulb(to);
 
-    // Get the absolute opposite direction index (180 degrees shift)
     Direction oppositeDir = DirectionUtils::getOpposite(dir);
 
     // A valid connection requires mutual alignment of active conductive arms

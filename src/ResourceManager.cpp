@@ -23,7 +23,6 @@ const sf::Font& ResourceManager::getFont(const std::string& filepath) {
     }
 
     sf::Font font;
-    // CORRECTION SFML 3 : loadFromFile est devenu openFromFile pour les polices
     if (!font.openFromFile(filepath)) {
         throw GameException("Graphics Error: Failed to load font file: " + filepath);
     }
