@@ -3,6 +3,10 @@
 #include "LevelLoader.h"
 #include <iostream>
 
+const std::string LEVEL_1_PATH = "../../../level1.txt";
+const std::string LEVEL_2_PATH = "../../../level2.txt";
+const std::string LEVEL_3_PATH = "../../../level3.txt";
+
 Game::Game()
     : m_boardRenderer(m_board, m_resourceManager),
     m_currentLevelIndex(0) {
@@ -10,9 +14,9 @@ Game::Game()
 }
 
 void Game::initializePlaylist() {
-    m_levelPlaylist.push_back("../../../level1.txt");
-    m_levelPlaylist.push_back("../../../level2.txt");
-    m_levelPlaylist.push_back("../../../level3.txt");
+    m_levelPlaylist.push_back(LEVEL_1_PATH);
+    m_levelPlaylist.push_back(LEVEL_2_PATH);
+    m_levelPlaylist.push_back(LEVEL_3_PATH);
 }
 
 void Game::loadNextLevel() {

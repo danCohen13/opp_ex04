@@ -1,4 +1,5 @@
 #include "HexGeometry.h"
+#include "Direction.h"
 
 // Static definition tracking the 6 physical directions in 60-degree increments
 const std::vector<HexPosition> HexGeometry::m_neighborOffsets = {
@@ -12,7 +13,7 @@ const std::vector<HexPosition> HexGeometry::m_neighborOffsets = {
 
 std::vector<HexPosition> HexGeometry::getNeighbors(const HexPosition& position) {
     std::vector<HexPosition> neighbors;
-    neighbors.reserve(6);
+    neighbors.reserve(NUM_DIRECTIONS);
 
     for (const auto& offset : m_neighborOffsets) {
         neighbors.push_back({ position.q + offset.q, position.r + offset.r });

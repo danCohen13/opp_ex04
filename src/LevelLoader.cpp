@@ -1,6 +1,7 @@
 #include "LevelLoader.h"
 #include "FileUtils.h"
 #include "Exceptions.h"
+#include "Direction.h"
 #include <fstream>
 #include <sstream>
 
@@ -45,7 +46,7 @@ Level LevelLoader::loadFromFile(const std::string& filepath) {
 
         for (int i = 0; i < numArms; ++i) {
             int dirValue = 0;
-            if (!(bulbStream >> dirValue) || dirValue < 0 || dirValue > 5) {
+            if (!(bulbStream >> dirValue) || dirValue < MIN_DIRECTION_VAL || dirValue > MAX_DIRECTION_VAL) {
                 throw CorruptedLevelException("Invalid arm direction index value.");
             }
             info.initialArms.push_back(static_cast<Direction>(dirValue));

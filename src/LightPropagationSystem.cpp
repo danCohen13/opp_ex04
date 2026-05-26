@@ -1,6 +1,7 @@
 ﻿#include "LightPropagationSystem.h"
 #include "ConnectionValidator.h"
 #include "HexGeometry.h"
+#include "Direction.h"
 #include <map>
 #include <set>
 
@@ -14,7 +15,7 @@ static void dfs(Board& board,
     std::vector<HexPosition> neighbors = HexGeometry::getNeighbors(current);
     const auto& allBulbs = board.getAllBulbs();
 
-    for (size_t i = 0; i < 6; ++i)
+    for (size_t i = 0; i < NUM_DIRECTIONS; ++i)
     {
         const HexPosition& neighborPos = neighbors[i];
         Direction dir = static_cast<Direction>(i);
